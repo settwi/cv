@@ -1,0 +1,14 @@
+\usepackage[breaklinks, colorlinks=true, allcolors=blue]{hyperref}
+\def\UrlBreaks{\do\/\do-}
+
+\DeclareFieldFormat{citehyperref}{%
+  \DeclareFieldAlias{bibhyperref}{noformat}% Avoid nested links
+  \bibhyperref{#1}}
+
+\savebibmacro{cite}
+
+\renewbibmacro*{cite}{%
+  \printtext[citehyperref]{%
+    \restorebibmacro{cite}%
+    \usebibmacro{cite}}}
+
